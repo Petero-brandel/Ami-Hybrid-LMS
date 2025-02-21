@@ -2,53 +2,111 @@
 
 ## Overview
 
-We aim to create a cutting-edge hybrid platform that transcends location and distance barriers, establishing a physical presence across the 36 states of Nigeria, extending to all of Africa, and across the globe.
+Our mission is to create a cutting-edge hybrid education platform that transcends geographical barriers, enabling seamless access to quality education across Nigeria, Africa, and the globe. By combining online and offline learning experiences, we aim to revolutionize education delivery, making it accessible, efficient, and effective for students, parents, and educators alike.
 
-## Objectives
+---
 
-1. **Parental Access**: Parents in Ebonyi, Kogi, Kwara, Kaduna, or anywhere in the country can seamlessly register their kids online, sign necessary legal documents, pay tuition fees, and monitor their progress.
+## Core Objectives
 
-2. **Teacher Recruitment and Management**: Teachers can apply online from various locations, be invited for interviews, pass the TEACHERS ON TRAINING program, and be employed. The system will match teachers with homes using GPS location tracking. Tutors' hours taught will increment, and their wallet balance will update according to their hourly pay. They will have access to all teaching materials and can withdraw their earnings at the end of the month.
+### For Parents:
+1. **Seamless Registration**: Parents from any location (e.g., Ebonyi, Kogi, Kwara, Kaduna) can register their children online, complete legal documentation, and manage tuition payments.
+2. **Progress Monitoring**: Parents can track their children’s academic progress, attendance, and performance in real-time.
+3. **Payment Management**: A built-in wallet system will notify parents of due payments and provide a transparent overview of tuition fees and balances.
+
+### For Teachers:
+1. **Online Recruitment**: Teachers can apply for positions online, undergo interviews, and complete the TEACHERS ON TRAINING program.
+2. **GPS-Based Matching**: The system will match teachers with students/homes based on proximity using GPS technology.
+3. **Hourly Tracking & Payments**: Tutors’ working hours will be tracked automatically, and their earnings will be calculated based on hourly rates. Teachers can withdraw their earnings at the end of the month.
+4. **Resource Access**: Teachers will have access to a comprehensive library of teaching materials and tools to enhance their effectiveness.
+
+---
 
 ## Management Structure
 
-### 1. National Headquarters
-- **General Admin (GA)**: Oversees all business activities, has access to the admin dashboard for performance overviews, manages teacher salaries, and has the final decision-making power.
+### 1. **National Headquarters**
+- **General Admin (GA)**: The apex authority overseeing all operations.
   - **Responsibilities**:
-    - Monitor teacher performance and reviews.
-    - Sanction underperforming tutors.
-    - Control the general running of the business.
+    - Monitor overall business performance via an admin dashboard.
+    - Access detailed reports on teacher performance, parent reviews, and financials.
+    - Approve or sanction tutors based on performance metrics.
+    - Manage salary disbursements and ensure smooth business operations.
 
-### 2. Regional Headquarters
-- **Regional Admin (RA)**: Reports to the GA, oversees business activities in their state, and is accountable for homes and tutors in their region.
+### 2. **Regional Headquarters**
+- **Regional Admin (RA)**: Oversees operations within a specific state or region.
   - **Responsibilities**:
-    - Ensure quality and performance of tutors.
-    - Conduct home audits and quality checks.
+    - Ensure accountability for all homes and tutors within their jurisdiction.
+    - Conduct regular audits and quality checks to maintain service standards.
+    - Address underperformance issues and provide feedback to the GA.
 
-**Note**: These structures are subject to review, adoption, and approval by the CEO and may change.
+**Note**: This structure is subject to review and approval by the CEO and may be adjusted as needed.
+
+---
 
 ## Operational Workflow
 
-- **Advertising**: Run ads on Facebook, Google, and affiliate platforms.
-- **Parent Registration**: Parents register on the platform, create profiles for their kids, and manage their wallets for tuition payments.
-- **Class Approval**: Parents approve daily lessons and provide reviews post-class, which are accessible to admins for performance evaluation.
+### 1. **Advertising & Outreach**
+- Utilize Facebook Ads, Google Ads, and affiliate marketing to attract parents and tutors.
+- Promote the platform’s unique features, such as hybrid learning and real-time progress tracking.
+
+### 2. **Parent Onboarding**
+- Parents register on the platform and create profiles for their children.
+- Each child’s profile includes details such as grade level, learning preferences, and performance history.
+- Parents receive notifications for upcoming payments and class schedules.
+
+### 3. **Class Management**
+- Parents approve daily lessons and provide feedback after each session.
+- Reviews are accessible to admins for performance evaluation and quality assurance.
+
+---
 
 ## Class Structure
 
-- **Hybrid Classes**: 60% offline and 40% online (subject to change).
-- **Student Interface**: Good User Interface (UI) and User Experience (UX) with access to a Learning Management System (LMS) and study materials.
-- **Online Class Simulation**: Aim to make online classes as effective as offline ones.
-- **Performance Tracking**: System notifies students of classes, tracks performance, and suggests materials from the e-library.
-- **Teacher Support**: System suggests student performance areas needing attention to teachers.
+### Hybrid Learning Model
+- **60% Offline, 40% Online**: A balanced approach to ensure flexibility and effectiveness (subject to change).
+- **Offline Classes**: In-person sessions for hands-on learning and interaction.
+- **Online Classes**: Virtual sessions designed to replicate the effectiveness of offline classes.
+
+### Student Experience
+- **User-Friendly Interface**: A seamless and intuitive Learning Management System (LMS) for students.
+- **Performance Tracking**: The system analyzes student performance and recommends tailored study materials from our extensive e-library.
+- **Class Notifications**: Students receive reminders for upcoming classes and assignments.
+
+### Teacher Support
+- **Resource Access**: Teachers can access all necessary teaching materials and tools via their dashboard.
+- **Performance Insights**: The system provides insights into student performance, highlighting areas that require additional focus.
+- **Attendance & Punctuality**: Teachers are expected to be punctual and attend all classes unless excused.
+
+---
 
 ## Tutor Responsibilities
 
-- **Access to Materials**: All necessary teaching materials are available on the dashboard.
-- **Class Notifications**: Tutors are notified of class schedules and locations.
-- **Account Management**: Manage account balances and ensure punctuality and attendance.
+1. **Preparation**: Access and prepare teaching materials from the platform’s resource library.
+2. **Class Management**: Attend scheduled classes on time and deliver high-quality lessons.
+3. **Performance Reporting**: Submit performance reports and feedback after each session.
+4. **Earnings Management**: Monitor and withdraw earnings at the end of the month.
+
+---
 
 ## System Requirements
 
-We need a robust system capable of handling all these functionalities and more to ensure a wider market reach, increased audience, and higher revenue.
+We envision a robust, scalable platform capable of handling the following functionalities:
+- **User Management**: Seamless onboarding for parents, students, and teachers.
+- **Payment Integration**: Secure tuition fee payments and salary disbursements.
+- **GPS Tracking**: Efficient matching of tutors with students based on location.
+- **Performance Analytics**: Real-time tracking of student and teacher performance.
+- **Communication Tools**: Built-in messaging and notification systems for all users.
+- **Scalability**: Support for expanding operations across Nigeria, Africa, and globally.
 
-**Note**: This document is subject to change based on further reviews and approvals.
+---
+
+## Expected Outcomes
+
+By implementing this platform, we aim to:
+- Expand our market reach and audience base.
+- Increase revenue through scalable operations.
+- Deliver high-quality education that bridges the gap between online and offline learning.
+- Empower parents, students, and teachers with tools for success.
+
+---
+
+**Note**: This document is a living draft and is subject to review, updates, and approval by the CEO. Changes may be made to align with evolving business goals and market demands.
