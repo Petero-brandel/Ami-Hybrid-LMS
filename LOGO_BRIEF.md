@@ -1,7 +1,7 @@
 # Logo Design Brief for Academic Medic Institute (AMI)
 
 ## Project Overview
-We need a **wordmark logo** for **Academic Medic Institute (AMI)**. The logo should serve as both a **text-based logo** and an **icon**, making it versatile for use across various platforms (e.g., website, mobile app, print materials). The design should reflect professionalism, trust, and innovation, aligning with our mission to provide cutting-edge education in the medical field.
+We need a **wordmark logo** for **Academic Medic Institute (AMI)**. The logo should serve as both a **text-based logo** and an **icon**, making it versatile for use across various platforms (e.g., website, mobile app, print materials). The design should reflect professionalism, trust, and innovation, aligning with our mission to provide cutting-edge education.
 
 ## Key Requirements
 1. **Logo Type**:
