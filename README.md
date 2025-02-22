@@ -107,6 +107,11 @@ By implementing this platform, we aim to:
 - Deliver high-quality education that bridges the gap between online and offline learning.
 - Empower parents, students, and teachers with tools for success.
 
+
+For details on the logo design requirements, please refer to the [Logo Design Brief](LOGO_BRIEF.md).
+
 ---
+
+
 
 **Note**: This document is a living draft and is subject to review, updates, and approval by the CEO. Changes may be made to align with evolving business goals and market demands.
