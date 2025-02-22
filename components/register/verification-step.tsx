@@ -8,13 +8,10 @@ import { Input } from "@/components/ui/input";
 import { ArrowLeft } from "lucide-react";
 
 interface VerificationStepProps {
-  formData: {
-    email: string;
-  };
   onBack: () => void;
 }
 
-export function VerificationStep({ formData, onBack }: VerificationStepProps) {
+export function VerificationStep({ onBack }: VerificationStepProps) {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
 
   const handleChange = (index: number, value: string) => {

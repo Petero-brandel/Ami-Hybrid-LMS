@@ -21,17 +21,7 @@ import { LanguageSelector } from "@/components/language-selector";
 export default function Register() {
   const [step, setStep] = useState(1);
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    country: "",
-    firstName: "",
-    middleName: "",
-    surname: "",
-    gender: "",
-    email: "",
-    phone: "",
-    password: "",
-    confirmPassword: "",
-  });
+  // Removed unused formData and setFormData state
 
   const handleNext = () => {
     setStep((prev) => prev + 1);
