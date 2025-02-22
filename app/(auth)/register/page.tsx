@@ -41,7 +41,7 @@ export default function Register() {
     <div className="min-h-screen flex flex-col">
       <header className="flex items-center justify-between p-4 md:p-6">
         <Link href="/" className="text-xl font-bold">
-          Grey
+          AMI
         </Link>
         <LanguageSelector />
       </header>
@@ -76,7 +76,7 @@ export default function Register() {
                     ? "Swap currencies with no hidden fees at the best market rates"
                     : step === 3
                     ? "Spend freely with a debit card that makes your international payments easier"
-                    : "Complete your account setup to start using Grey"}
+                    : "Complete your account setup to start using AMI"}
                 </p>
               </div>
             </div>
@@ -410,7 +410,7 @@ export default function Register() {
                 Privacy Policy
               </Link>
             </div>
-            <div className="text-sm text-gray-500">© Grey, 2025</div>
+            <div className="text-sm text-gray-500">© AMI, 2025</div>
           </div>
         </div>
       </footer>

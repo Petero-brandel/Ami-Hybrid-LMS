@@ -11,7 +11,7 @@ export default function Login() {
     <div className="min-h-screen flex flex-col">
       <header className="flex items-center justify-between p-4 md:p-6">
         <Link href="/" className="text-xl font-bold">
-          Grey
+          AMI
         </Link>
         <LanguageSelector />
       </header>
@@ -104,7 +104,7 @@ export default function Login() {
                 Privacy Policy
               </Link>
             </div>
-            <div className="text-sm text-gray-500">© Grey, 2025</div>
+            <div className="text-sm text-gray-500">© AMI, 2025</div>
           </div>
         </div>
       </footer>
