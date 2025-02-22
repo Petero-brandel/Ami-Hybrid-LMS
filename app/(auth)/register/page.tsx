@@ -54,7 +54,7 @@ export default function Register() {
                   {step === 1
                     ? "Receive your payments faster"
                     : step === 2
-                    ? "Instantly convert between currencies"
+                    ? "Easily manage your child's education"
                     : step === 3
                     ? "Spend globally with your Dollar card"
                     : "Verify your account"}
@@ -63,7 +63,7 @@ export default function Register() {
                   {step === 1
                     ? "Open a global bank account to send and receive payments in minutes"
                     : step === 2
-                    ? "Swap currencies with no hidden fees at the best market rates"
+                    ? "Monitor your child's academic progress and manage tuition payments"
                     : step === 3
                     ? "Spend freely with a debit card that makes your international payments easier"
                     : "Complete your account setup to start using AMI"}
