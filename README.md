@@ -108,9 +108,8 @@ By implementing this platform, we aim to:
 - Empower parents, students, and teachers with tools for success.
 
 
-
----
 For details on the logo design requirements, please refer to the [Logo Design Brief](LOGO_BRIEF.md).
+
 ---
 
 
