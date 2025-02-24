@@ -187,9 +187,11 @@ export default function TeacherRegistration() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="bachelors">
-                          Bachelor's Degree
+                          Bachelor&apos;s Degree
                         </SelectItem>
-                        <SelectItem value="masters">Master's Degree</SelectItem>
+                        <SelectItem value="masters">
+                          Master&apos;s Degree
+                        </SelectItem>
                         <SelectItem value="phd">PhD</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
