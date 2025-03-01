@@ -66,3 +66,33 @@ export async function sendDocuments(data: any) {
     body: JSON.stringify(data),
   });
 }
+
+export async function sendParentPersonalInfo(data: any) {
+  return await fetch("/api/parent/personal-info", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+
+export async function sendParentChildInfo(data: any) {
+  return await fetch("/api/parent/child-info", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+
+export async function sendParentChildDocs(data: any) {
+  return await fetch("/api/parent/child-info", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
