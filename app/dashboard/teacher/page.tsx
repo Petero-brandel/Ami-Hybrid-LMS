@@ -7,7 +7,8 @@ export default async function TeacherDashboard() {
   const session = await auth();
 
   if (!session?.user?.id) {
-    return notFound();
+    // Return back to registration page
+    return;
   }
 
   return (
