@@ -8,8 +8,6 @@ import {
   text,
   decimal,
   date,
-  primaryKey,
-  foreignKey,
   boolean,
 } from "drizzle-orm/pg-core";
 

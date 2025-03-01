@@ -6,7 +6,7 @@ import { LoadingButton } from "@/components/ui/loading-button";
 import { FormField } from "@/components/auth/form-field";
 import { FormSection } from "@/components/auth/form-section";
 import { FileUpload } from "@/components/auth/file-upload";
-import { sendParentChildDocs, simulateApiCall } from "@/lib/api-utils";
+import { sendParentChildDocs } from "@/lib/api-utils";
 
 interface StepThreeProps {
   onBack: () => void;
@@ -28,11 +28,7 @@ export function StepThree({ onBack }: StepThreeProps) {
     setLoading(true);
     try {
       // Simulate API call with uploaded files
-      const result = sendParentChildDocs(uploadedFiles);
-      // await simulateApiCall({
-      //   files: uploadedFiles,
-      //   timestamp: new Date().toISOString(),
-      // });
+      await sendParentChildDocs(uploadedFiles);
 
       // Redirect to dashboard after successful registration
       router.push("/dashboard/parent");

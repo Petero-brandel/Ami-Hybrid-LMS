@@ -12,10 +12,10 @@ import {
 } from "@/components/ui/select";
 import { FormField } from "@/components/auth/form-field";
 import { FormSection } from "@/components/auth/form-section";
-import { sendPersonalInfo, simulateApiCall } from "@/lib/api-utils";
+import { sendPersonalInfo } from "@/lib/api-utils";
 
 interface StepOneProps {
-  onNext: (data: any) => void;
+  onNext: (data: unknown) => void;
 }
 
 export function StepOne({ onNext }: StepOneProps) {

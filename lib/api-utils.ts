@@ -25,7 +25,7 @@ export async function simulateFileUpload(file: File): Promise<string> {
   return `https://storage.bucket.com/${file.name}`;
 }
 
-export async function sendPersonalInfo(data: any) {
+export async function sendPersonalInfo(data: Record<string, unknown>) {
   console.log("data", data);
   const result = await fetch("/api/teacher/personal-info", {
     method: "POST",
@@ -37,7 +37,7 @@ export async function sendPersonalInfo(data: any) {
   return result;
 }
 
-export async function sendProfessionalInfo(data: any) {
+export async function sendProfessionalInfo(data: Record<string, unknown>) {
   return await fetch("/api/teacher/professional-info", {
     method: "POST",
     headers: {
@@ -47,7 +47,7 @@ export async function sendProfessionalInfo(data: any) {
   });
 }
 
-export async function uploadFile(data: any) {
+export async function uploadFile(data: File) {
   console.log("to be uploaded", data);
   const formData = new FormData();
   formData.append("file", data);
@@ -57,7 +57,7 @@ export async function uploadFile(data: any) {
   });
 }
 
-export async function sendDocuments(data: any) {
+export async function sendDocuments(data: Record<string, unknown>) {
   return await fetch("/api/teacher/documents", {
     method: "POST",
     headers: {
@@ -67,7 +67,7 @@ export async function sendDocuments(data: any) {
   });
 }
 
-export async function sendParentPersonalInfo(data: any) {
+export async function sendParentPersonalInfo(data: Record<string, unknown>) {
   return await fetch("/api/parent/personal-info", {
     method: "POST",
     headers: {
@@ -77,7 +77,7 @@ export async function sendParentPersonalInfo(data: any) {
   });
 }
 
-export async function sendParentChildInfo(data: any) {
+export async function sendParentChildInfo(data: Record<string, unknown>) {
   return await fetch("/api/parent/child-info", {
     method: "POST",
     headers: {
@@ -87,7 +87,7 @@ export async function sendParentChildInfo(data: any) {
   });
 }
 
-export async function sendParentChildDocs(data: any) {
+export async function sendParentChildDocs(data: Record<string, unknown>) {
   return await fetch("/api/parent/child-info", {
     method: "POST",
     headers: {

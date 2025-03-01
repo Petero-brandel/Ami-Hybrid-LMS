@@ -5,7 +5,7 @@ import { AuthLayout } from "@/components/auth/auth-layout";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function TeacherRegistration({ session }: { session: any }) {
+export default function TeacherRegistration() {
   const [step, setStep] = useState(1);
 
   return (

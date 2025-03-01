@@ -1,7 +1,7 @@
 // import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { auth } from "@/app/(auth)/auth";
 import { Button } from "@/components/ui/button";
-import { notFound } from "next/navigation";
+// import { notFound } from "next/navigation";
 
 export default async function TeacherDashboard() {
   const session = await auth();
@@ -20,7 +20,7 @@ export default async function TeacherDashboard() {
             Welcome back, {session?.user?.email}
           </h1>
           <p className="text-muted-foreground">
-            Here's what's happening with your classes today.
+            Here&apos;s what&apos;s happening with your classes today.
           </p>
         </div>
         <Button>Start Online Class</Button>

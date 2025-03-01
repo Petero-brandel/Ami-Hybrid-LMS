@@ -6,7 +6,7 @@ import { LoadingButton } from "@/components/ui/loading-button";
 import { FormField } from "@/components/auth/form-field";
 import { FormSection } from "@/components/auth/form-section";
 import { FileUpload } from "@/components/auth/file-upload";
-import { sendDocuments, simulateApiCall } from "@/lib/api-utils";
+import { sendDocuments } from "@/lib/api-utils";
 
 interface StepThreeProps {
   onBack: () => void;

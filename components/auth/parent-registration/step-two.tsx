@@ -12,10 +12,10 @@ import {
 } from "@/components/ui/select";
 import { FormField } from "@/components/auth/form-field";
 import { FormSection } from "@/components/auth/form-section";
-import { sendParentChildInfo, simulateApiCall } from "@/lib/api-utils";
+import { sendParentChildInfo } from "@/lib/api-utils";
 
 interface StepTwoProps {
-  onNext: (data: any) => void;
+  onNext: (data: unknown) => void;
   onBack: () => void;
 }
 

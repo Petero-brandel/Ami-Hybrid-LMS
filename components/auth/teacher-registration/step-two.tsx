@@ -12,10 +12,10 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { FormField } from "@/components/auth/form-field";
 import { FormSection } from "@/components/auth/form-section";
-import { sendProfessionalInfo, simulateApiCall } from "@/lib/api-utils";
+import { sendProfessionalInfo } from "@/lib/api-utils";
 
 interface StepTwoProps {
-  onNext: (data: any) => void;
+  onNext: (data: unknown) => void;
   onBack: () => void;
 }
 

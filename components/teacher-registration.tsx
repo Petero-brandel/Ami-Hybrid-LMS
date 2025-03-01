@@ -8,7 +8,7 @@ import { StepTwo } from "@/components/auth/teacher-registration/step-two";
 import { StepThree } from "@/components/auth/teacher-registration/step-three";
 import RegisterAuth from "./auth";
 
-export default function TeacherRegistration({ session }: { session: any }) {
+export default function TeacherRegistration({ session }: { session: unknown }) {
   const [step, setStep] = useState(1);
 
   return (

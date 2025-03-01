@@ -5,13 +5,13 @@ import type React from "react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Loader2, CheckCircle2, XCircle } from "lucide-react";
-import { simulateFileUpload, uploadFile } from "@/lib/api-utils";
+import { uploadFile } from "@/lib/api-utils";
 
 interface FileUploadProps {
   label: string;
   accept?: string;
   required?: boolean;
-  onUploadComplete: (res: any) => void;
+  onUploadComplete: (res: string) => void;
 }
 
 export function FileUpload({
@@ -33,12 +33,21 @@ export function FileUpload({
     setUploadComplete(false);
 
     try {
-      // const url = await simulateFileUpload(file);
       console.log("intial files", file);
-      const url = await uploadFile(file);
+      const response = await uploadFile(file);
+
+      // Extract the URL from the response
+      // If response returns JSON
+      const data = await response.json();
+      const url = data.url || data.fileUrl || data; // Use appropriate property name
+
+      // If the response is directly a text URL, use this instead:
+      // const url = await response.text();
+
       setUploadComplete(true);
       onUploadComplete(url);
-    } catch (err) {
+    } catch (error) {
+      console.error("Upload error:", error);
       setError(true);
     } finally {
       setUploading(false);
