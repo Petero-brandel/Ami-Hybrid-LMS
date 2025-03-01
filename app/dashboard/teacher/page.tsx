@@ -1,9 +1,15 @@
 // import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { auth } from "@/app/(auth)/auth";
 import { Button } from "@/components/ui/button";
+import { notFound } from "next/navigation";
 
 export default async function TeacherDashboard() {
   const session = await auth();
+
+  if (!session?.user?.id) {
+    return notFound();
+  }
+
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
