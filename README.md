@@ -115,6 +115,3 @@ For details on the logo design requirements, please refer to the [Logo Design Br
 
 
 **Note**: This document is a living draft and is subject to review, updates, and approval by the CEO. Changes may be made to align with evolving business goals and market demands.
-
-
-Everyone in this group is stressing me, meanwhile i am the boss
