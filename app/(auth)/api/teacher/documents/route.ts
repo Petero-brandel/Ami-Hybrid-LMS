@@ -1,8 +1,14 @@
 import { NextResponse } from "next/server";
 import { saveTeacherDocuments } from "@/lib/db/queries";
+import { auth } from "@/app/(auth)/auth";
 
 export async function POST(request: Request) {
-  const { userId, resume, certificates, governmentId, profilePhoto } =
+  const session = await auth();
+  if (!session || !session.user || !session.user.id) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+  const userId = session.user.id;
+  const { resume, certificates, governmentId, profilePhoto } =
     await request.json();
 
   try {
