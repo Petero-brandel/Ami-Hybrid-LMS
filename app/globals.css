@@ -46,3 +46,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+.bg{
+  background-image: url('/banner.png');
+  background-position: center;
+  height: 200px;
+  width: 500px;
+}
