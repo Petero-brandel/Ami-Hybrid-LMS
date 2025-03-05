@@ -1,42 +1,43 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { ArrowLeft } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ArrowLeft } from "lucide-react";
 
 interface VerificationStepProps {
   formData: {
-    email: string
-  }
-  onBack: () => void
+    email: string;
+  };
+  onBack: () => void;
 }
 
 export function VerificationStep({ formData, onBack }: VerificationStepProps) {
-  const [otp, setOtp] = useState(["", "", "", "", "", ""])
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  console.log(formData);
 
   const handleChange = (index: number, value: string) => {
     if (value.length <= 1) {
-      const newOtp = [...otp]
-      newOtp[index] = value
-      setOtp(newOtp)
+      const newOtp = [...otp];
+      newOtp[index] = value;
+      setOtp(newOtp);
 
       // Auto-focus next input
       if (value && index < 5) {
-        const nextInput = document.getElementById(`otp-${index + 1}`)
-        nextInput?.focus()
+        const nextInput = document.getElementById(`otp-${index + 1}`);
+        nextInput?.focus();
       }
     }
-  }
+  };
 
   const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
-      const prevInput = document.getElementById(`otp-${index - 1}`)
-      prevInput?.focus()
+      const prevInput = document.getElementById(`otp-${index - 1}`);
+      prevInput?.focus();
     }
-  }
+  };
 
   return (
     <div className="space-y-6">
@@ -50,7 +51,8 @@ export function VerificationStep({ formData, onBack }: VerificationStepProps) {
 
       <div className="space-y-4">
         <p className="text-sm text-gray-500">
-          Please enter the OTP sent to the email address you provided to verify your email address
+          Please enter the OTP sent to the email address you provided to verify
+          your email address
         </p>
 
         <div className="flex justify-between gap-2">
@@ -74,11 +76,14 @@ export function VerificationStep({ formData, onBack }: VerificationStepProps) {
           Verify your account
         </Button>
 
-        <Button variant="link" className="w-full" onClick={() => setOtp(["", "", "", "", "", ""])}>
+        <Button
+          variant="link"
+          className="w-full"
+          onClick={() => setOtp(["", "", "", "", "", ""])}
+        >
           Resend code
         </Button>
       </div>
     </div>
-  )
+  );
 }
-

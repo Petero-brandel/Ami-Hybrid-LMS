@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function TeacherRegistration() {
-  const [step, setStep] = useState(1);
-
   return (
     <AuthLayout
       title="Join Our Teaching Community"

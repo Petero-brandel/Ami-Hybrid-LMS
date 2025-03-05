@@ -26,6 +26,7 @@ export function StepThree({ onBack, onComplete }: StepThreeProps) {
 
   const handleSubmit = async () => {
     setLoading(true);
+    onComplete();
     try {
       await sendDocuments(uploadedFiles);
 

@@ -59,8 +59,8 @@ export function StepTwo({ onNext, onBack }: StepTwoProps) {
             <SelectValue placeholder="Select qualification" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="bachelors">Bachelor's Degree</SelectItem>
-            <SelectItem value="masters">Master's Degree</SelectItem>
+            <SelectItem value="bachelors">Bachelor&apos;s Degree</SelectItem>
+            <SelectItem value="masters">Master&apos;s Degree</SelectItem>
             <SelectItem value="phd">PhD</SelectItem>
             <SelectItem value="other">Other</SelectItem>
           </SelectContent>
