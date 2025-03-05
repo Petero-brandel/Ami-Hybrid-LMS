@@ -26,7 +26,7 @@ export const {
         // biome-ignore lint: Forbidden non-null assertion.
         const passwordsMatch = await compare(password, users[0].password!);
         if (!passwordsMatch) return null;
-        return users[0] as any;
+        return users[0] as User;
       },
     }),
   ],
@@ -43,7 +43,7 @@ export const {
       token,
     }: {
       session: ExtendedSession;
-      token: any;
+      token: User;
     }) {
       if (session.user) {
         session.user.id = token.id as string;
