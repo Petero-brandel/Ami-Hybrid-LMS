@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { AuthLayout } from "@/components/auth/auth-layout";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
