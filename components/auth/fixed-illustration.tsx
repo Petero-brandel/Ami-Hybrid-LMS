@@ -1,17 +1,20 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 interface FixedIllustrationProps {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
-export function FixedIllustration({ title, description }: FixedIllustrationProps) {
+export function FixedIllustration({
+  title,
+  description,
+}: FixedIllustrationProps) {
   return (
     <div className="hidden lg:block fixed left-0 top-20 w-1/2 h-screen">
       <div className="absolute inset-0">
         <Image
-          src="https://qgame3ccfcbtygae.public.blob.vercel-storage.com/A%20classic%20oil%20painting%20depicting%20a%203D%20illustration%20of%20an%20African%20child%20with%20curly%20hair,%20joyf-uRZIYmegcY6p4GEoKXNsckyWkfksMI.jpg"
+          src="/A classic oil painting depicting a 3D illustration of an African child with curly hair, joyf.jpg"
           alt="African education illustration"
           fill
           className="object-cover"
@@ -37,6 +40,5 @@ export function FixedIllustration({ title, description }: FixedIllustrationProps
         </div>
       </div>
     </div>
-  )
+  );
 }
-
