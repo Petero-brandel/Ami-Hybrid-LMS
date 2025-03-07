@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoadingButton } from "@/components/ui/loading-button";
 import { Input } from "@/components/ui/input";
 import {
@@ -24,7 +24,9 @@ export function StepOne({ onNext }: StepOneProps) {
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
+    // Todo: Implement setting phone code accordingly
+    // phoneCode: "",
+    phoneNumber: "",
     state: "",
   });
 
@@ -40,6 +42,10 @@ export function StepOne({ onNext }: StepOneProps) {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    console.log("form data", formData);
+  }, [formData]);
 
   const isComplete = Object.values(formData).every(Boolean);
 
@@ -95,9 +101,9 @@ export function StepOne({ onNext }: StepOneProps) {
           <Input
             placeholder="Enter phone number"
             className="flex-1"
-            value={formData.phone}
+            value={formData.phoneNumber}
             onChange={(e) =>
-              setFormData((prev) => ({ ...prev, phone: e.target.value }))
+              setFormData((prev) => ({ ...prev, phoneNumber: e.target.value }))
             }
           />
         </div>

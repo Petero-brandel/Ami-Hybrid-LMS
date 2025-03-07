@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoadingButton } from "@/components/ui/loading-button";
 import {
   Select,
@@ -22,9 +22,9 @@ interface StepTwoProps {
 export function StepTwo({ onNext, onBack }: StepTwoProps) {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    qualification: "",
-    experience: "",
-    subject: "",
+    highestQualification: "",
+    yearsOfExperience: "",
+    primarySubject: "",
     introduction: "",
   });
 
@@ -41,6 +41,10 @@ export function StepTwo({ onNext, onBack }: StepTwoProps) {
     }
   };
 
+  useEffect(() => {
+    console.log("form data", formData);
+  }, [formData]);
+
   const isComplete = Object.values(formData).every(Boolean);
 
   return (
@@ -50,9 +54,9 @@ export function StepTwo({ onNext, onBack }: StepTwoProps) {
     >
       <FormField label="Highest Qualification">
         <Select
-          value={formData.qualification}
+          value={formData.highestQualification}
           onValueChange={(value) =>
-            setFormData((prev) => ({ ...prev, qualification: value }))
+            setFormData((prev) => ({ ...prev, highestQualification: value }))
           }
         >
           <SelectTrigger>
@@ -69,9 +73,9 @@ export function StepTwo({ onNext, onBack }: StepTwoProps) {
 
       <FormField label="Years of Teaching Experience">
         <Select
-          value={formData.experience}
+          value={formData.yearsOfExperience}
           onValueChange={(value) =>
-            setFormData((prev) => ({ ...prev, experience: value }))
+            setFormData((prev) => ({ ...prev, yearsOfExperience: value }))
           }
         >
           <SelectTrigger>
@@ -88,9 +92,9 @@ export function StepTwo({ onNext, onBack }: StepTwoProps) {
 
       <FormField label="Subjects">
         <Select
-          value={formData.subject}
+          value={formData.primarySubject}
           onValueChange={(value) =>
-            setFormData((prev) => ({ ...prev, subject: value }))
+            setFormData((prev) => ({ ...prev, primarySubject: value }))
           }
         >
           <SelectTrigger>
