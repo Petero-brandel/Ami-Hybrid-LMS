@@ -1,8 +1,9 @@
-import Link from "next/link"
-export default function Footer (){
-    return(
-        <div>
-              <footer className="border-t bg-[#002D69] text-red-50">
+import Link from "next/link";
+
+export default function Footer() {
+  return (
+    <div>
+      <footer className="border-t bg-[#002D69] text-red-50">
         <div className="container md:w-[95%] mx-auto px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 ">
             <div>
@@ -67,6 +68,6 @@ export default function Footer (){
           </div>
         </div>
       </footer>
-        </div>
-    )
+    </div>
+  );
 }
