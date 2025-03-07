@@ -1,4 +1,5 @@
 import { put } from "@vercel/blob";
+import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   console.log("requesting upl");
@@ -9,5 +10,5 @@ export async function POST(request: Request) {
 
   console.log("blob", blob);
 
-  return Response.json(blob);
+  return NextResponse.json(blob);
 }

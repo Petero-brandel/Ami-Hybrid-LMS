@@ -10,7 +10,11 @@ import { StepThree } from "@/components/auth/parent-registration/step-three";
 import RegisterAuth from "./auth";
 import { Session } from "next-auth";
 
-export default function ParentRegistration({ session }: { session: Session }) {
+export default function ParentRegistration({
+  session,
+}: {
+  session: Session | null;
+}) {
   const [step, setStep] = useState(1);
 
   return (

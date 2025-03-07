@@ -1,10 +1,16 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  images: {
-    domains: ["qgame3ccfcbtygae.public.blob.vercel-storage.com"],
+  experimental: {
+    ppr: true,
   },
-  /* other config options here */
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'avatar.vercel.sh',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
