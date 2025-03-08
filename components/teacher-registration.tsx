@@ -6,7 +6,7 @@ import { ProgressSteps } from "@/components/auth/progress-steps";
 import { StepOne } from "@/components/auth/teacher-registration/step-one";
 import { StepTwo } from "@/components/auth/teacher-registration/step-two";
 import { StepThree } from "@/components/auth/teacher-registration/step-three";
-import RegisterAuth from "./auth";
+import Auth from "./auth";
 
 export default function TeacherRegistration({ session }: { session: unknown }) {
   const [step, setStep] = useState(1);
@@ -32,7 +32,7 @@ export default function TeacherRegistration({ session }: { session: unknown }) {
           )}
         </>
       ) : (
-        <RegisterAuth />
+        <Auth roles={["teacher"]} />
       )}
     </AuthLayout>
   );

@@ -13,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { FormField } from "@/components/auth/form-field";
 import { FormSection } from "@/components/auth/form-section";
 import { sendProfessionalInfo } from "@/lib/api-utils";
+import { SubjectsSelect } from "@/components/subjects-select";
 
 interface StepTwoProps {
   onNext: (data: unknown) => void;
@@ -24,7 +25,7 @@ export function StepTwo({ onNext, onBack }: StepTwoProps) {
   const [formData, setFormData] = useState({
     highestQualification: "",
     yearsOfExperience: "",
-    primarySubject: "",
+    primarySubjects: [] as string[],
     introduction: "",
   });
 
@@ -91,22 +92,12 @@ export function StepTwo({ onNext, onBack }: StepTwoProps) {
       </FormField>
 
       <FormField label="Subjects">
-        <Select
-          value={formData.primarySubject}
-          onValueChange={(value) =>
-            setFormData((prev) => ({ ...prev, primarySubject: value }))
+        <SubjectsSelect
+          selectedSubjects={formData.primarySubjects}
+          onSubjectsChange={(subjects) =>
+            setFormData((prev) => ({ ...prev, primarySubjects: subjects }))
           }
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Select primary subject" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="mathematics">Mathematics</SelectItem>
-            <SelectItem value="english">English</SelectItem>
-            <SelectItem value="science">Science</SelectItem>
-            <SelectItem value="social-studies">Social Studies</SelectItem>
-          </SelectContent>
-        </Select>
+        />
       </FormField>
 
       <FormField label="Brief Introduction">

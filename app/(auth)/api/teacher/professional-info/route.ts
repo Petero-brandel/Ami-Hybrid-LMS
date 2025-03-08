@@ -11,16 +11,22 @@ export async function POST(request: Request) {
   const {
     highestQualification,
     yearsOfExperience,
-    primarySubject,
+    primarySubjects,
     introduction,
   } = await request.json();
 
+  console.log("incoming proffesinal info", {
+    highestQualification,
+    yearsOfExperience,
+    primarySubjects,
+    introduction,
+  });
   try {
     const result = await saveTeacherProfessionalInfo({
       userId,
       highestQualification,
       yearsOfExperience,
-      primarySubject,
+      primarySubject: primarySubjects,
       introduction,
     });
     return NextResponse.json({ success: true, result });

@@ -10,10 +10,11 @@ import { SubmitButton } from "@/components/submit-button";
 
 import { register, type RegisterActionState } from "@/app/(auth)/actions";
 
-export default function Page() {
+export default function Auth({ roles = ["teacher", "parent", "student"] }) {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
   const [isSuccessful, setIsSuccessful] = useState(false);
 
   const [state, formAction] = useActionState<RegisterActionState, FormData>(
@@ -39,6 +40,7 @@ export default function Page() {
 
   const handleSubmit = (formData: FormData) => {
     setEmail(formData.get("email") as string);
+    setRole(formData.get("role") as string); // Add this line
     formAction(formData);
   };
 
@@ -48,10 +50,17 @@ export default function Page() {
         <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
           <h3 className="text-xl font-semibold dark:text-zinc-50">Sign Up</h3>
           <p className="text-sm text-gray-500 dark:text-zinc-400">
-            Create an account with your email and password
+            Create an account with your email, password, and role
           </p>
         </div>
-        <AuthForm action={handleSubmit} defaultEmail={email}>
+        <AuthForm
+          action={handleSubmit}
+          defaultEmail={email}
+          role={role}
+          setRole={setRole}
+          roles={roles}
+        >
+          {/* Add this line */}
           <SubmitButton isSuccessful={isSuccessful}>Sign Up</SubmitButton>
           <p className="text-center text-sm text-gray-600 mt-4 dark:text-zinc-400">
             {"Already have an account? "}

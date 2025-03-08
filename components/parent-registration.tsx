@@ -7,7 +7,7 @@ import { StepOne } from "@/components/auth/parent-registration/step-one";
 import { StepTwo } from "@/components/auth/parent-registration/step-two";
 import { StepThree } from "@/components/auth/parent-registration/step-three";
 
-import RegisterAuth from "./auth";
+import Auth from "./auth";
 import { Session } from "next-auth";
 
 export default function ParentRegistration({
@@ -38,7 +38,7 @@ export default function ParentRegistration({
           )}
         </>
       ) : (
-        <RegisterAuth />
+        <Auth roles={["parent"]} />
       )}
     </AuthLayout>
   );
