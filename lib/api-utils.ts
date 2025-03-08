@@ -26,7 +26,6 @@ export async function simulateFileUpload(file: File): Promise<string> {
 }
 
 export async function sendPersonalInfo(data: Record<string, unknown>) {
-  console.log("data", data);
   const result = await fetch("/api/teacher/personal-info", {
     method: "POST",
     headers: {
@@ -48,7 +47,6 @@ export async function sendProfessionalInfo(data: Record<string, unknown>) {
 }
 
 export async function uploadFile(data: File) {
-  console.log("to be uploaded", data);
   const formData = new FormData();
   formData.append("file", data);
   return await fetch("/api/files/upload", {

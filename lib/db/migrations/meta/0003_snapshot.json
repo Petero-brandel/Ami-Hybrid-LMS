@@ -1,6 +1,6 @@
 {
-  "id": "0214c5fc-7ceb-43b7-b3ef-fb1e7e5c8161",
-  "prevId": "bbecbe4e-a0e3-44c9-bad6-20bf5464c3d5",
+  "id": "3660bf72-a133-43b5-a5c0-64039bae7fcf",
+  "prevId": "1eb5d905-5f82-4af3-a890-589b2586cf12",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -39,11 +39,17 @@
           "primaryKey": false,
           "notNull": false
         },
-        "phone": {
-          "name": "phone",
+        "state": {
+          "name": "state",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phoneNumber": {
+          "name": "phoneNumber",
           "type": "varchar(20)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "address": {
           "name": "address",

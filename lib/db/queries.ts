@@ -5,7 +5,7 @@ import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
-import { teacher, user, type User } from "./schema";
+import { teacher, parent, user, type User } from "./schema";
 
 // Optionally, if not using email/pass login, you can
 // use the Drizzle adapter for Auth.js / NextAuth
@@ -177,6 +177,55 @@ export async function saveTeacherDocuments({
     }
   } catch (error) {
     console.error("Failed to save or update teacher documents in database");
+    throw error;
+  }
+}
+
+export async function saveParentPersonalInfo({
+  userId,
+  firstName,
+  lastName,
+  email,
+  phoneNumber,
+  state,
+}: {
+  userId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  state: string;
+}) {
+  try {
+    const existingParent = await db
+      .select()
+      .from(parent)
+      .where(eq(parent.userId, userId));
+    if (existingParent.length > 0) {
+      return await db
+        .update(parent)
+        .set({
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+          state,
+          updatedAt: new Date(),
+        })
+        .where(eq(parent.userId, userId));
+    } else {
+      return await db.insert(parent).values({
+        createdAt: new Date(),
+        userId,
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        state,
+      });
+    }
+  } catch (error) {
+    console.error("Failed to save or update teacher personal info in database");
     throw error;
   }
 }

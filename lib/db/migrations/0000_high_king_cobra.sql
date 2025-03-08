@@ -1,6 +1,8 @@
-CREATE TABLE "Parent" (
+CREATE TABLE IF NOT EXISTS "Parent" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"userId" uuid NOT NULL,
+	"firstName" varchar(100) NOT NULL,
+	"lastName" varchar(100) NOT NULL,
 	"phone" varchar(20) NOT NULL,
 	"address" text,
 	"latitude" numeric(10, 8),
@@ -9,7 +11,7 @@ CREATE TABLE "Parent" (
 	"updatedAt" timestamp DEFAULT now()
 );
 --> statement-breakpoint
-CREATE TABLE "Student" (
+CREATE TABLE IF NOT EXISTS "Student" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"parentId" uuid NOT NULL,
 	"firstName" varchar(100) NOT NULL,
@@ -22,7 +24,7 @@ CREATE TABLE "Student" (
 	"updatedAt" timestamp DEFAULT now()
 );
 --> statement-breakpoint
-CREATE TABLE "Teacher" (
+CREATE TABLE IF NOT EXISTS "Teacher" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"userId" uuid,
 	"firstName" varchar(100),
@@ -45,6 +47,26 @@ CREATE TABLE "Teacher" (
 	"updatedAt" timestamp DEFAULT now()
 );
 --> statement-breakpoint
-ALTER TABLE "Parent" ADD CONSTRAINT "Parent_userId_User_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "Student" ADD CONSTRAINT "Student_parentId_Parent_id_fk" FOREIGN KEY ("parentId") REFERENCES "public"."Parent"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "Teacher" ADD CONSTRAINT "Teacher_userId_User_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON DELETE cascade ON UPDATE no action;
+CREATE TABLE IF NOT EXISTS "User" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"email" varchar(64) NOT NULL,
+	"password" varchar(64)
+);
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "Parent" ADD CONSTRAINT "Parent_userId_User_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "Student" ADD CONSTRAINT "Student_parentId_Parent_id_fk" FOREIGN KEY ("parentId") REFERENCES "public"."Parent"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "Teacher" ADD CONSTRAINT "Teacher_userId_User_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;

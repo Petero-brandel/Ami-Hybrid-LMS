@@ -48,7 +48,11 @@ export const parent = pgTable("Parent", {
   userId: uuid("userId")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
-  phone: varchar("phone", { length: 20 }).notNull(),
+  firstName: varchar("firstName", { length: 100 }).notNull(),
+  lastName: varchar("lastName", { length: 100 }).notNull(),
+  email: varchar("email", { length: 64 }),
+  state: varchar("state", { length: 50 }),
+  phoneNumber: varchar("phoneNumber", { length: 20 }),
   address: text("address"),
   latitude: decimal("latitude", { precision: 10, scale: 8 }),
   longitude: decimal("longitude", { precision: 11, scale: 8 }),

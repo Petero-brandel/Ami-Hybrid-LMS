@@ -24,21 +24,14 @@ export function StepOne({ onNext }: StepOneProps) {
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     state: "",
   });
 
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      // Simulate API validation and processing
-      // const result = await simulateApiCall({
-      //   ...formData,
-      //   step: 1,
-      //   timestamp: new Date().toISOString(),
-      // });
       const result = await sendParentPersonalInfo(formData);
-      console.log("Parent Step 1 result:", result);
       onNext(result);
     } catch (error) {
       console.error("Step 1 failed:", error);
@@ -101,9 +94,9 @@ export function StepOne({ onNext }: StepOneProps) {
           <Input
             placeholder="Enter phone number"
             className="flex-1"
-            value={formData.phone}
+            value={formData.phoneNumber}
             onChange={(e) =>
-              setFormData((prev) => ({ ...prev, phone: e.target.value }))
+              setFormData((prev) => ({ ...prev, phoneNumber: e.target.value }))
             }
           />
         </div>
