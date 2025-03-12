@@ -31,6 +31,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Providers from "@/components/tooltip-provider";
 import { User } from "@/components/user";
 import { NavItem } from "@/components/nav-item";
+import { SearchInput } from "@/components/search";
 
 export default function DashboardLayout({
   children,
@@ -45,6 +46,7 @@ export default function DashboardLayout({
           <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
             <MobileNav />
             <DashboardBreadcrumb />
+            <SearchInput />
             <User />
           </header>
           <main className="grid flex-1 items-start gap-2 p-4 sm:px-6 sm:py-0 md:gap-4 bg-muted/40">
