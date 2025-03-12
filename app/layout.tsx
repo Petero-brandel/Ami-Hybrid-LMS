@@ -58,7 +58,6 @@ export default async function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <Navbar />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
