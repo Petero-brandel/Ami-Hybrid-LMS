@@ -1,6 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, Users, Wallet } from "lucide-react";
 import { StudentCard } from "@/components/dashboard/student-card";
 
 // Mock data for students
