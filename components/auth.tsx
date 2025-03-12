@@ -46,7 +46,7 @@ export default function Auth({ roles = ["teacher", "parent", "student"] }) {
 
   return (
     <div className="space-y-6">
-      <div className="w-full max-w-md overflow-hidden rounded-2xl gap-12 flex flex-col">
+      <div className="w-full max-w-lg overflow-hidden gap-12 flex flex-col">
         <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
           <h3 className="text-xl font-semibold dark:text-zinc-50">Sign Up</h3>
           <p className="text-sm text-gray-500 dark:text-zinc-400">

@@ -11,7 +11,7 @@ export function FixedIllustration({
   description,
 }: FixedIllustrationProps) {
   return (
-    <div className="hidden lg:block fixed left-0 top-20 w-1/2 h-screen">
+    <div className="hidden lg:block fixed left-0 w-1/2 h-screen">
       <div className="absolute inset-0">
         <Image
           src="/A classic oil painting depicting a 3D illustration of an African child with curly hair, joyf.jpg"

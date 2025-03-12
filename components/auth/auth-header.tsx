@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { LanguageSelector } from "@/components/language-selector"
+import Link from "next/link";
+import { LanguageSelector } from "@/components/language-selector";
 
 export function AuthHeader() {
   return (
@@ -11,6 +11,5 @@ export function AuthHeader() {
         <LanguageSelector />
       </div>
     </header>
-  )
+  );
 }
-

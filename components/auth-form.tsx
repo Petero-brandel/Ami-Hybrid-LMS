@@ -38,7 +38,7 @@ export function AuthForm({
           Role{" "}
         </Label>
         <Select value={role} onValueChange={setRole} name="role">
-          <SelectTrigger>
+          <SelectTrigger className="h-12 rounded-full">
             <SelectValue placeholder="Select your role" />
           </SelectTrigger>
           <SelectContent>
@@ -59,7 +59,7 @@ export function AuthForm({
         <Input
           id="email"
           name="email"
-          className="bg-muted text-md md:text-sm"
+          className="bg-muted text-md md:text-sm h-12 rounded-full"
           type="email"
           placeholder="user@acme.com"
           autoComplete="email"
@@ -80,7 +80,7 @@ export function AuthForm({
         <Input
           id="password"
           name="password"
-          className="bg-muted text-md md:text-sm"
+          className="bg-muted text-md md:text-sm h-12 rounded-full"
           type="password"
           required
         />
