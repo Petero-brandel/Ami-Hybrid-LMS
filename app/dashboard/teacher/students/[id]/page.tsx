@@ -266,7 +266,9 @@ export default function StudentDetail() {
           <TabsContent value="notes" className="space-y-4 pt-4">
             <Card>
               <CardHeader className="pb-2">
-                <CardTitle className="text-base">Teacher's Notes</CardTitle>
+                <CardTitle className="text-base">
+                  Teacher&apos;s Notes
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm">{student.notes}</p>

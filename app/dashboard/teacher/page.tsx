@@ -73,7 +73,7 @@ export default function TeacherDashboard() {
         <div>
           <h1 className="text-2xl font-bold">Welcome back, Sarah</h1>
           <p className="text-muted-foreground">
-            Here's what's happening with your classes today.
+            Here&apos;s what&apos;s happening with your classes today.
           </p>
         </div>
         <Button>Start</Button>
