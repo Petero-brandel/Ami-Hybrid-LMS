@@ -60,7 +60,6 @@ export default function Auth({ roles = ["teacher", "parent", "student"] }) {
           setRole={setRole}
           roles={roles}
         >
-          {/* Add this line */}
           <SubmitButton isSuccessful={isSuccessful}>Sign Up</SubmitButton>
           <p className="text-center text-sm text-gray-600 mt-4 dark:text-zinc-400">
             {"Already have an account? "}

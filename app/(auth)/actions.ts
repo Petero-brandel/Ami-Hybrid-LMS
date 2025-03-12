@@ -9,7 +9,7 @@ import { signIn } from "./auth";
 const authFormSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
-  role: z.string().nonempty(), // Add this line
+  role: z.string().nonempty(),
 });
 
 export interface LoginActionState {
@@ -24,11 +24,13 @@ export const login = async (
     const validatedData = authFormSchema.parse({
       email: formData.get("email"),
       password: formData.get("password"),
+      role: formData.get("role"),
     });
 
     await signIn("credentials", {
       email: validatedData.email,
       password: validatedData.password,
+      role: validatedData.role,
       redirect: false,
     });
 
@@ -61,7 +63,7 @@ export const register = async (
     const validatedData = authFormSchema.parse({
       email: formData.get("email"),
       password: formData.get("password"),
-      role: formData.get("role"), // Add this line
+      role: formData.get("role"),
     });
 
     const [user] = await getUser(validatedData.email);
@@ -73,7 +75,7 @@ export const register = async (
       validatedData.email,
       validatedData.password,
       validatedData.role
-    ); // Add role here
+    );
     await signIn("credentials", {
       email: validatedData.email,
       password: validatedData.password,

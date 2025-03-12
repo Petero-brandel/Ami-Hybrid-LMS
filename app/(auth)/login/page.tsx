@@ -38,8 +38,10 @@ export default function Login() {
 
   const handleSubmit = (formData: FormData) => {
     setEmail(formData.get("email") as string);
+    setRole(formData.get("role") as string); // Add this line
     formAction(formData);
   };
+
   return (
     <AuthLayout
       title="Welcome Back"
@@ -74,8 +76,6 @@ export default function Login() {
           </AuthForm>
         </div>
       </div>
-      {/* <Auth roles={["teacher", "parent"]}></Auth> */}
-      {/* <LoginForm /> */}
     </AuthLayout>
   );
 }
