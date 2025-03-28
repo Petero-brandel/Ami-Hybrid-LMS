@@ -1,5 +1,5 @@
 {
-  "id": "bbecbe4e-a0e3-44c9-bad6-20bf5464c3d5",
+  "id": "5db4c75c-6fd1-4e99-b553-ba2fc3cd104d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -19,25 +19,19 @@
           "name": "userId",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
-        "firstName": {
-          "name": "firstName",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastName": {
-          "name": "lastName",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "phone": {
-          "name": "phone",
+        "parentId": {
+          "name": "parentId",
           "type": "varchar(20)",
           "primaryKey": false,
           "notNull": true
+        },
+        "contactNumber": {
+          "name": "contactNumber",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false
         },
         "address": {
           "name": "address",
@@ -45,15 +39,9 @@
           "primaryKey": false,
           "notNull": false
         },
-        "latitude": {
-          "name": "latitude",
-          "type": "numeric(10, 8)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "longitude": {
-          "name": "longitude",
-          "type": "numeric(11, 8)",
+        "details": {
+          "name": "details",
+          "type": "json",
           "primaryKey": false,
           "notNull": false
         },
@@ -89,7 +77,15 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "Parent_parentId_unique": {
+          "name": "Parent_parentId_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "parentId"
+          ]
+        }
+      }
     },
     "public.Student": {
       "name": "Student",
@@ -102,44 +98,44 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
+        "userId": {
+          "name": "userId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "studentId": {
+          "name": "studentId",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
         "parentId": {
           "name": "parentId",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
-        },
-        "firstName": {
-          "name": "firstName",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastName": {
-          "name": "lastName",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "dateOfBirth": {
-          "name": "dateOfBirth",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "gradeLevel": {
           "name": "gradeLevel",
           "type": "varchar(20)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "learningPreferences": {
           "name": "learningPreferences",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "performanceHistory": {
+          "name": "performanceHistory",
           "type": "json",
           "primaryKey": false,
           "notNull": false
         },
-        "documents": {
-          "name": "documents",
+        "details": {
+          "name": "details",
           "type": "json",
           "primaryKey": false,
           "notNull": false
@@ -161,6 +157,19 @@
       },
       "indexes": {},
       "foreignKeys": {
+        "Student_userId_User_id_fk": {
+          "name": "Student_userId_User_id_fk",
+          "tableFrom": "Student",
+          "tableTo": "User",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
         "Student_parentId_Parent_id_fk": {
           "name": "Student_parentId_Parent_id_fk",
           "tableFrom": "Student",
@@ -171,12 +180,20 @@
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
+          "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "Student_studentId_unique": {
+          "name": "Student_studentId_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "studentId"
+          ]
+        }
+      }
     },
     "public.Teacher": {
       "name": "Teacher",
@@ -195,45 +212,22 @@
           "primaryKey": false,
           "notNull": false
         },
-        "firstName": {
-          "name": "firstName",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "lastName": {
-          "name": "lastName",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "email": {
-          "name": "email",
-          "type": "varchar(64)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "phoneNumber": {
-          "name": "phoneNumber",
+        "teacherId": {
+          "name": "teacherId",
           "type": "varchar(20)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "state": {
-          "name": "state",
-          "type": "varchar(50)",
+        "isActive": {
+          "name": "isActive",
+          "type": "boolean",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": true
         },
-        "qualification": {
-          "name": "qualification",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "experience": {
-          "name": "experience",
-          "type": "varchar(50)",
+        "hourlyRate": {
+          "name": "hourlyRate",
+          "type": "varchar(10)",
           "primaryKey": false,
           "notNull": false
         },
@@ -243,55 +237,23 @@
           "primaryKey": false,
           "notNull": false
         },
-        "bio": {
-          "name": "bio",
+        "qualifications": {
+          "name": "qualifications",
           "type": "text",
           "primaryKey": false,
           "notNull": false
         },
-        "documents": {
-          "name": "documents",
+        "location": {
+          "name": "location",
           "type": "json",
           "primaryKey": false,
           "notNull": false
         },
-        "verified": {
-          "name": "verified",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": false,
-          "default": false
-        },
-        "latitude": {
-          "name": "latitude",
-          "type": "numeric(10, 8)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "longitude": {
-          "name": "longitude",
-          "type": "numeric(11, 8)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "hourlyRate": {
-          "name": "hourlyRate",
-          "type": "numeric(10, 2)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "availability": {
-          "name": "availability",
+        "details": {
+          "name": "details",
           "type": "json",
           "primaryKey": false,
           "notNull": false
-        },
-        "currentStep": {
-          "name": "currentStep",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": false,
-          "default": "'1'"
         },
         "createdAt": {
           "name": "createdAt",
@@ -325,7 +287,15 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "Teacher_teacherId_unique": {
+          "name": "Teacher_teacherId_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "teacherId"
+          ]
+        }
+      }
     },
     "public.User": {
       "name": "User",
@@ -349,15 +319,71 @@
           "type": "varchar(64)",
           "primaryKey": false,
           "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image": {
+          "name": "image",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'/avatar-placeholder.svg'"
+        },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'student'"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "User_email_unique": {
+          "name": "User_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      }
     }
   },
-  "enums": {},
+  "enums": {
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "teacher",
+        "student",
+        "parent",
+        "admin",
+        "regional_admin",
+        "general_admin"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "_meta": {

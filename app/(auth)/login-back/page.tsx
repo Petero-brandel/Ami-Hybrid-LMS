@@ -1,11 +1,5 @@
 import { auth } from "@/app/(auth)/auth";
 import { redirect } from "next/navigation";
-import { User } from "next-auth";
-
-// Add interface to extend the User type
-interface ExtendedUser extends User {
-  role?: string;
-}
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const session = await auth();
@@ -17,15 +11,15 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   }
 
   // Use type assertion to tell TypeScript about the role property
-  const user = session.user as ExtendedUser;
+  const user = session.user;
 
   // Redirect based on user role
   if (user.role === "teacher") {
-    redirect("/dashboard/teacher");
+    redirect("/teacher");
   } else if (user.role === "parent") {
-    redirect("/dashboard/parent");
+    redirect("/parent");
   } else if (user.role === "student") {
-    redirect("/dashboard/student");
+    redirect("/student");
   } else {
     // Handle unknown role or default case
     redirect("/"); // Fallback to a general dashboard

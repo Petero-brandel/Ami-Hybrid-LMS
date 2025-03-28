@@ -1,45 +1,66 @@
 "use client";
 
+import type React from "react";
+
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useActionState, useEffect, useState } from "react";
 import { toast } from "sonner";
-
-import { AuthForm } from "@/components/auth-form";
+import { login } from "@/app/(auth)/actions";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { AuthLayout } from "@/components/auth/auth-layout";
-import { SubmitButton } from "@/components/submit-button";
-import { login, type LoginActionState } from "../actions";
 
 export default function Login() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    role: "admin",
+  });
 
-  const roles = ["teacher", "parent", "student"];
-  const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
-  const [isSuccessful, setIsSuccessful] = useState(false);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
 
-  const [state, formAction] = useActionState<LoginActionState, FormData>(
-    login,
-    {
-      status: "idle",
-    }
-  );
+    try {
+      const formDataObj = new FormData();
+      formDataObj.append("email", formData.email);
+      formDataObj.append("password", formData.password);
+      formDataObj.append("role", formData.role);
 
-  useEffect(() => {
-    if (state.status === "failed") {
-      toast.error("Invalid credentials!");
-    } else if (state.status === "invalid_data") {
-      toast.error("Failed validating your submission!");
-    } else if (state.status === "success") {
-      setIsSuccessful(true);
+      const result = await login(formDataObj);
+
+      if (result.error) {
+        toast.error(result.error);
+        setIsLoading(false);
+        return;
+      }
+
+      toast.success("Login successful");
+      router.push("/login-back");
       router.refresh();
+    } catch (error) {
+      toast.error("Something went wrong");
+      setIsLoading(false);
     }
-  }, [state.status, router]);
-
-  const handleSubmit = (formData: FormData) => {
-    setEmail(formData.get("email") as string);
-    setRole(formData.get("role") as string); // Add this line
-    formAction(formData);
   };
 
   return (
@@ -47,35 +68,76 @@ export default function Login() {
       title="Welcome Back"
       description="Sign in to continue your educational journey with AMI Education"
     >
-      <div className="space-y-6">
-        <div className="w-full max-w-md overflow-hidden rounded-2xl gap-12 flex flex-col">
-          <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
-            <h3 className="text-xl font-semibold dark:text-zinc-50">Sign In</h3>
-            <p className="text-sm text-gray-500 dark:text-zinc-400">
-              Use your email and password to sign in
-            </p>
-          </div>
-          <AuthForm
-            action={handleSubmit}
-            defaultEmail={email}
-            role={role}
-            setRole={setRole}
-            roles={roles}
-          >
-            <SubmitButton isSuccessful={isSuccessful}>Sign in</SubmitButton>
-            <p className="text-center text-sm text-gray-600 mt-4 dark:text-zinc-400">
-              {"Don't have an account? "}
-              <Link
-                href="/register"
-                className="font-semibold text-gray-800 hover:underline dark:text-zinc-200"
+      {/* Right side login form */}
+      <Card className="w-full max-w-md">
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl font-bold">Sign in</CardTitle>
+          <CardDescription>
+            Enter your credentials to access your account
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                required
+                value={formData.password}
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="role">Role</Label>
+              <Select
+                value={formData.role}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, role: value })
+                }
               >
-                Sign up
-              </Link>
-              {" for free."}
-            </p>
-          </AuthForm>
-        </div>
-      </div>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select role" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="teacher">Teacher</SelectItem>
+                  <SelectItem value="student">Student</SelectItem>
+                  <SelectItem value="parent">Parent</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Signing in..." : "Sign in"}
+            </Button>
+          </form>
+        </CardContent>
+        <CardFooter className="flex flex-col space-y-4">
+          <div className="text-center text-sm">
+            Don&apos;t have an account?{" "}
+            <Link
+              href="/register"
+              className="font-medium text-primary hover:underline"
+            >
+              Register
+            </Link>
+          </div>
+        </CardFooter>
+      </Card>
     </AuthLayout>
   );
 }

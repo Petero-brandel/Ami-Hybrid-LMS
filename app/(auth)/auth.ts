@@ -6,12 +6,13 @@ import { getUser } from "@/lib/db/queries";
 
 import { authConfig } from "./auth.config";
 
-interface ExtendedSession extends Session {
-  user: User & { role: string };
-}
-
-interface ExtendedUser extends User {
-  role: string;
+declare module "next-auth" {
+  interface User {
+    role: string;
+  }
+  interface Session {
+    user: User;
+  }
 }
 
 export const {
@@ -24,13 +25,14 @@ export const {
   providers: [
     Credentials({
       credentials: {},
-      async authorize({ email, password }: any) {
+      async authorize({ email, password, role }: any) {
         const users = await getUser(email);
         if (users.length === 0) return null;
         // biome-ignore lint: Forbidden non-null assertion.
         const passwordsMatch = await compare(password, users[0].password!);
-        if (!passwordsMatch) return null;
-        return users[0] as ExtendedUser;
+        const roleMatch = role === users[0].role;
+        if (!passwordsMatch || !roleMatch) return null;
+        return users[0] as User;
       },
     }),
   ],
@@ -38,7 +40,7 @@ export const {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.role = (user as ExtendedUser).role;
+        token.role = user.role;
       }
 
       return token;

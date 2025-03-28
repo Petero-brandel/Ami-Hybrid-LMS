@@ -5,43 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1741436120784,
-      "tag": "0000_high_king_cobra",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1741436307092,
-      "tag": "0001_fair_havok",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1741436380464,
-      "tag": "0002_spotty_maestro",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1741436469946,
-      "tag": "0003_shiny_kid_colt",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1741450674559,
-      "tag": "0004_vengeful_dormammu",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1741450853993,
-      "tag": "0005_melodic_catseye",
+      "when": 1743023448485,
+      "tag": "0000_classy_titanium_man",
       "breakpoints": true
     }
   ]

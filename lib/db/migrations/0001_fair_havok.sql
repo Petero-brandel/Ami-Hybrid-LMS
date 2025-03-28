@@ -1,1 +1,0 @@
-ALTER TABLE "Parent" ADD COLUMN "email" varchar(64);

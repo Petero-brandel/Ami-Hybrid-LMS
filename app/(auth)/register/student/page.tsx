@@ -1,16 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { LanguageSelector } from "@/components/language-selector";
 import { ProgressIndicator } from "@/components/registration/progress-indicator";
-import { PersonalInfoStep } from "@/components/teacher-registration/personal-info-step";
-import { ProfessionalInfoStep } from "@/components/teacher-registration/professional-info-step";
-import { DocumentationStep } from "@/components/teacher-registration/documentation-step";
-import { registerTeacher } from "@/app/(auth)/actions";
-import { toast } from "sonner";
+import { PersonalInfoStep } from "@/components/student-registration/personal-info-step";
+import { AcademicInfoStep } from "@/components/student-registration/academic-info-step";
+import { ParentInfoStep } from "@/components/student-registration/parent-info-step";
 import { AuthLayout } from "@/components/auth/auth-layout";
+import { registerStudent } from "../../actions";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
-export default function TeacherRegistration() {
+export default function StudentRegistration() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,18 +25,18 @@ export default function TeacherRegistration() {
     confirmPassword: "",
     phoneNumber: "",
     state: "",
-
-    // Professional info
-    qualification: "",
-    experience: "",
-    subjects: [] as string[],
-    introduction: "",
-
-    // Documentation (URLs instead of File objects)
-    resume: "",
-    certificates: "",
-    governmentId: "",
     profilePhoto: "",
+
+    // Academic info
+    gradeLevel: "",
+    learningPreferences: "",
+    interests: "",
+
+    // Parent info
+    parentName: "",
+    parentEmail: "",
+    parentPhone: "",
+    relationship: "",
   });
 
   const updateFormData = (data: Partial<typeof formData>) => {
@@ -57,14 +60,16 @@ export default function TeacherRegistration() {
       submitData.append("name", formData.name);
       submitData.append("email", formData.email);
       submitData.append("password", formData.password);
-      submitData.append("role", "teacher");
+      submitData.append("role", "student");
       submitData.append("contactNumber", formData.phoneNumber);
       submitData.append("address", formData.state);
-      submitData.append("subjects", JSON.stringify(formData.subjects));
-      submitData.append("qualifications", formData.qualification);
-      submitData.append("resume", formData.resume);
-      submitData.append("governmentId", formData.resume);
-      submitData.append("profilePhoto", formData.resume);
+      submitData.append("gradeLevel", formData.gradeLevel);
+      submitData.append("learningPreferences", formData.learningPreferences);
+      submitData.append("interests", formData.interests);
+      submitData.append("parentName", formData.parentName);
+      submitData.append("parentEmail", formData.parentEmail);
+      submitData.append("parentPhone", formData.parentPhone);
+      submitData.append("relationship", formData.relationship);
 
       // Add profile photo if available
       if (formData.profilePhoto) {
@@ -72,7 +77,7 @@ export default function TeacherRegistration() {
       }
 
       // Call the server action
-      const result = await registerTeacher(submitData);
+      const result = await registerStudent(submitData);
 
       if (result.error) {
         toast.error(result.error);
@@ -90,8 +95,8 @@ export default function TeacherRegistration() {
 
   return (
     <AuthLayout
-      title="Join Our Teaching Community"
-      description="Apply now to become part of our innovative hybrid learning platform and shape the future of education."
+      title="Begin Your Learning Journey"
+      description="Register now to access our hybrid learning platform and connect with qualified teachers."
     >
       <main className="flex-1 overflow-auto">
         <div className="max-w-[500px] mx-auto p-4 lg:p-8 space-y-8">
@@ -108,7 +113,7 @@ export default function TeacherRegistration() {
           )}
 
           {step === 2 && (
-            <ProfessionalInfoStep
+            <AcademicInfoStep
               formData={formData}
               updateFormData={updateFormData}
               onNext={handleNext}
@@ -117,7 +122,7 @@ export default function TeacherRegistration() {
           )}
 
           {step === 3 && (
-            <DocumentationStep
+            <ParentInfoStep
               formData={formData}
               isSubmitting={isSubmitting}
               updateFormData={updateFormData}
