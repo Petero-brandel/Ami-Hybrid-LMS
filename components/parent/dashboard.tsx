@@ -169,7 +169,7 @@ export function ParentDashboard({ parent }: { parent: any }) {
             <CardHeader>
               <CardTitle>Parent Dashboard</CardTitle>
               <CardDescription>
-                Monitor your children's education
+                Monitor your children&apos;s education
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -665,7 +665,7 @@ export function ParentDashboard({ parent }: { parent: any }) {
                         Performance Report Available
                       </h4>
                       <p className="text-sm text-gray-700">
-                        Sarah Smith's quarterly performance report is now
+                        Sarah Smith&apos;s quarterly performance report is now
                         available for review.
                       </p>
                       <p className="text-sm text-gray-500 mt-1">
@@ -686,8 +686,8 @@ export function ParentDashboard({ parent }: { parent: any }) {
                     <div>
                       <h4 className="font-medium">Payment Confirmation</h4>
                       <p className="text-sm text-gray-700">
-                        Your payment of {formatCurrency(50000)} for John Smith's
-                        tuition has been processed successfully.
+                        Your payment of {formatCurrency(50000)} for John
+                        Smith&apos;s tuition has been processed successfully.
                       </p>
                       <p className="text-sm text-gray-500 mt-1">
                         {formatDate(new Date(Date.now() - 5 * 86400000))}

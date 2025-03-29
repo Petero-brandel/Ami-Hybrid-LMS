@@ -61,8 +61,8 @@ export function ProfessionalInfoStep({
               <SelectValue placeholder="Select qualification" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="bachelors">Bachelor's Degree</SelectItem>
-              <SelectItem value="masters">Master's Degree</SelectItem>
+              <SelectItem value="bachelors">Bachelora&apos;s Degree</SelectItem>
+              <SelectItem value="masters">Mastera&apos;s Degree</SelectItem>
               <SelectItem value="phd">PhD</SelectItem>
               <SelectItem value="other">Other</SelectItem>
             </SelectContent>
