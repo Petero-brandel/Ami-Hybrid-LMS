@@ -26,7 +26,7 @@ export default async function TeacherPage() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-2xl font-bold mb-4">Teacher Profile Not Found</h1>
-        <p className="mb-4">We couldn't find your teacher profile.</p>
+        <p className="mb-4">We couldn&apos;t find your teacher profile.</p>
         <a href="/login" className="text-blue-500 hover:underline">
           Return to Login
         </a>

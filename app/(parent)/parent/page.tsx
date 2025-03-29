@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/app/(auth)/auth";
-import { getParentById } from "@/lib/db/queries";
 import { ParentDashboard } from "@/components/parent/dashboard";
 import { getParentProfile } from "./actions";
 
@@ -27,7 +26,7 @@ export default async function ParentPage() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-2xl font-bold mb-4">Parent Profile Not Found</h1>
-        <p className="mb-4">We couldn't find your parent profile.</p>
+        <p className="mb-4">We couldn&apos;t find your parent profile.</p>
         <a href="/login" className="text-blue-500 hover:underline">
           Return to Login
         </a>
