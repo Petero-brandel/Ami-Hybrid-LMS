@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ProgressIndicator } from "@/components/registration/progress-indicator";
 import { AuthLayout } from "@/components/auth/auth-layout";
-import { registerParent, registerStudent } from "../../actions";
+import { registerAdmin, registerParent, registerStudent } from "../../actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { PersonalInfoStep } from "@/components/parent-registration/personal-info-step";
+import { PersonalInfoStep } from "@/components/admin-registration/personal-info-step";
 
 export default function AdminRegistration() {
   const router = useRouter();
@@ -44,9 +43,7 @@ export default function AdminRegistration() {
       submitData.append("name", formData.name);
       submitData.append("email", formData.email);
       submitData.append("password", formData.password);
-      submitData.append("role", "parent");
-      submitData.append("contactNumber", formData.phoneNumber);
-      submitData.append("address", formData.state);
+      submitData.append("role", "admin");
 
       // Add profile photo if available
       if (formData.profilePhoto) {
@@ -54,7 +51,7 @@ export default function AdminRegistration() {
       }
 
       // Call the server action
-      const result = await registerParent(submitData);
+      const result = await registerAdmin(submitData);
 
       if (result.error) {
         toast.error(result.error);

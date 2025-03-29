@@ -303,3 +303,49 @@ export async function registerParent(formData: FormData) {
     };
   }
 }
+
+export async function registerAdmin(formData: FormData) {
+  console.log("to be registered student", formData);
+  const name = formData.get("name") as string;
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+  const image = formData.get("image") as string;
+  const gradeLevel = formData.get("gradeLevel") as string;
+  const learningPreferences = formData.get("learningPreferences") as string;
+
+  // Validate form data
+  const validatedFields = studentSchema.safeParse({
+    name,
+    email,
+    password,
+    role: "student",
+    image,
+    gradeLevel,
+    learningPreferences,
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: "Invalid form data. Please check your inputs.",
+    };
+  }
+
+  try {
+    // Check if user already exists
+    const existingUser = await getUser(email);
+    if (existingUser.length > 0) {
+      return {
+        error: "User with this email already exists.",
+      };
+    }
+
+    // Create user
+    await createUser(email, password, name, "student", image);
+
+    return { success: true };
+  } catch (error) {
+    return {
+      error: "An error occurred during registration. Please try again.",
+    };
+  }
+}
