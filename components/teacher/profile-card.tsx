@@ -13,7 +13,7 @@ interface ProfileCardProps {
   };
 }
 
-export function ProfileCard({ teacher }: ProfileCardProps) {
+export function ProfileCard({ teacher }: any) {
   return (
     <Card>
       <CardHeader className="pb-2">

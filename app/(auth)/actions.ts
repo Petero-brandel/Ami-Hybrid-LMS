@@ -305,23 +305,19 @@ export async function registerParent(formData: FormData) {
 }
 
 export async function registerAdmin(formData: FormData) {
-  console.log("to be registered student", formData);
+  console.log("to be registered admin", formData);
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const image = formData.get("image") as string;
-  const gradeLevel = formData.get("gradeLevel") as string;
-  const learningPreferences = formData.get("learningPreferences") as string;
 
   // Validate form data
-  const validatedFields = studentSchema.safeParse({
+  const validatedFields = registerSchema.safeParse({
     name,
     email,
     password,
-    role: "student",
+    role: "admin",
     image,
-    gradeLevel,
-    learningPreferences,
   });
 
   if (!validatedFields.success) {

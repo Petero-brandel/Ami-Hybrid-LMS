@@ -2,6 +2,9 @@ import { redirect } from "next/navigation";
 import { auth } from "@/app/(auth)/auth";
 import { getTeacherById } from "@/lib/db/queries";
 import { TeacherDashboard } from "@/components/teacher/dashboard";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ProfileCard } from "@/components/teacher/profile-card";
 
 export default async function TeacherPage() {
   const session = await auth();
@@ -33,5 +36,5 @@ export default async function TeacherPage() {
     );
   }
 
-  return <TeacherDashboard teacher={teacherProfile[0]} />;
+  return <ProfileCard teacher={teacherProfile} />;
 }

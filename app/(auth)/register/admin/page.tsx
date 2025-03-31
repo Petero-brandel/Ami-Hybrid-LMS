@@ -26,14 +26,6 @@ export default function AdminRegistration() {
     setFormData((prev) => ({ ...prev, ...data }));
   };
 
-  const handleNext = () => {
-    setStep((prev) => prev + 1);
-  };
-
-  const handleBack = () => {
-    setStep((prev) => prev - 1);
-  };
-
   const handleSubmit = async () => {
     setIsSubmitting(true);
 
@@ -68,10 +60,7 @@ export default function AdminRegistration() {
   };
 
   return (
-    <AuthLayout
-      title="Give Your Child the Best Education"
-      description="Register now to access our hybrid learning platform and connect with qualified teachers in your area."
-    >
+    <AuthLayout title="Admin" description="Admin.">
       <main className="flex-1 overflow-auto">
         <div className="max-w-[500px] mx-auto p-4 lg:p-8 space-y-8">
           {/* Progress Indicator */}
