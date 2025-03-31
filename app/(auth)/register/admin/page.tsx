@@ -50,7 +50,7 @@ export default function AdminRegistration() {
       } else {
         toast("Registration Successful");
         // Redirect to login page
-        router.push("/login");
+        router.push("/login-admin");
       }
     } catch (error) {
       toast("Registration Failed");

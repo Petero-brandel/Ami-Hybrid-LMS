@@ -70,6 +70,7 @@ export async function login(formData: FormData) {
 
   try {
     // Attempt to sign in
+    console.log("singing in", email, password, role);
     const result = await signIn("credentials", {
       email,
       password,
@@ -336,7 +337,7 @@ export async function registerAdmin(formData: FormData) {
     }
 
     // Create user
-    await createUser(email, password, name, "student", image);
+    await createUser(email, password, name, "admin", image);
 
     return { success: true };
   } catch (error) {
