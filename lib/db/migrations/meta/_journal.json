@@ -8,6 +8,13 @@
       "when": 1743023448485,
       "tag": "0000_classy_titanium_man",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1744684899059,
+      "tag": "0001_chubby_purple_man",
+      "breakpoints": true
     }
   ]
 }

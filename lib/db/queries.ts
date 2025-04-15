@@ -1,7 +1,7 @@
 import "server-only";
 
 import { genSaltSync, hashSync } from "bcrypt-ts";
-import { desc, eq, like } from "drizzle-orm";
+import { count, desc, eq, like } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
@@ -63,6 +63,73 @@ export async function createStudent(data: any) {
     throw error;
   }
 }
+
+// Patient queries
+export async function getStudents(
+  page = 1,
+  limit = 10,
+  search?: string,
+  status?: string
+) {
+  try {
+    const offset = (page - 1) * limit;
+    let query = db
+      .select({
+        id: student.id,
+        userId: student.userId,
+        patientId: student.studentId,
+        status: student.status,
+        details: student.details,
+        name: user.name,
+        email: user.email,
+        image: user.image,
+        role: user.role,
+      })
+      .from(student)
+      .leftJoin(user, eq(student.userId, user.id))
+      .limit(limit)
+      .offset(offset);
+
+    if (search) {
+      // Todo: Search based on or patientId
+      query.where(like(user.name, `%${search}%`));
+    }
+
+    if (status) {
+      query.where(eq(student.status, status));
+    }
+
+    return await query.orderBy(desc(student.createdAt));
+  } catch (error) {
+    console.error("Failed to get patients from database");
+    throw error;
+  }
+}
+
+export async function getStudentsCount(search?: string, status?: string) {
+  try {
+    let query = db
+      .select({ count: count() })
+      .from(student)
+      .leftJoin(user, eq(student.userId, user.id));
+
+    if (search) {
+      query.where(like(user.name, `%${search}%`));
+    }
+
+    if (status) {
+      query.where(eq(student.status, status));
+    }
+
+    const result = await query;
+    console.log("query count result", result);
+    return result[0].count;
+  } catch (error) {
+    console.error("Failed to get patients count from database");
+    throw error;
+  }
+}
+
 export async function createParent(data: any) {
   try {
     return await db.insert(parent).values(data);

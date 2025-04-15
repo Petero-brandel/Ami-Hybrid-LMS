@@ -19,6 +19,15 @@ export const roleEnum = pgEnum("role", [
   "general_admin",
 ]);
 
+export const requestStatusEnum = pgEnum("request_status", [
+  "pending",
+  "assigned",
+  "completed",
+  "cancelled",
+]);
+
+export type RequestStatus = "pending" | "assigned" | "completed" | "cancelled";
+
 export type UserRole =
   | "teacher"
   | "student"
@@ -59,6 +68,7 @@ export type Teacher = InferSelectModel<typeof teacher>;
 export const student = pgTable("Student", {
   id: uuid("id").primaryKey().notNull().defaultRandom(),
   userId: uuid("userId").references(() => user.id, { onDelete: "cascade" }),
+  status: varchar("status", { length: 20 }).default("Improved"),
   studentId: varchar("studentId", { length: 20 }).notNull().unique(),
   parentId: uuid("parentId").references(() => parent.id),
   gradeLevel: varchar("gradeLevel", { length: 20 }),
@@ -83,3 +93,31 @@ export const parent = pgTable("Parent", {
 });
 
 export type Parent = InferSelectModel<typeof parent>;
+
+export const tutorRequest = pgTable("tutorRequest", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  requestId: varchar("requestId", { length: 20 }).notNull().unique(),
+  parentId: uuid("parentId").references(() => parent.id, {
+    onDelete: "cascade",
+  }),
+  studentId: uuid("studentId").references(() => student.id, {
+    onDelete: "cascade",
+  }),
+  details: json("details"),
+});
+
+export type TutorRequest = InferSelectModel<typeof tutorRequest>;
+
+export const enrollment = pgTable("Enrollment", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  studentId: uuid("studentId").references(() => student.id, {
+    onDelete: "cascade",
+  }),
+  teacherId: uuid("teacherId").references(() => teacher.id, {
+    onDelete: "cascade",
+  }),
+  startDate: timestamp("startDate"),
+  details: json("details"),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});
