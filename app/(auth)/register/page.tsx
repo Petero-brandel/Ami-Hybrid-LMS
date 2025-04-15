@@ -36,9 +36,9 @@ export default function RegistrationPage() {
           <div className="p-4 bg-green-50 rounded-md">
             <h3 className="font-semibold text-lg mb-2">For Parents</h3>
             <p className="text-sm text-muted-foreground">
-              Monitor your child's educational progress, manage payments, and
-              communicate with qualified teachers who are dedicated to your
-              child's success.
+              Monitor your child&apos;s educational progress, manage payments,
+              and communicate with qualified teachers who are dedicated to your
+              child&apos;s success.
             </p>
           </div>
 
@@ -46,15 +46,15 @@ export default function RegistrationPage() {
             <h3 className="font-semibold text-lg mb-2">For Teachers</h3>
             <p className="text-sm text-muted-foreground">
               Join our network of educators, share your expertise, and enjoy
-              flexibility while making a significant impact on students'
+              flexibility while making a significant impact on students&apos;
               educational journeys.
             </p>
           </div>
         </div>
 
         <p className="mt-4 text-sm text-muted-foreground">
-          By registering, you'll gain access to personalized learning paths,
-          interactive content, and a supportive community dedicated to
+          By registering, you&apos;ll gain access to personalized learning
+          paths, interactive content, and a supportive community dedicated to
           educational excellence.
         </p>
       </div>
